@@ -1,0 +1,115 @@
+<style>
+    /* Estilos mínimos para visualización directa, no afectan cuando se carga en index.html */
+    body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
+    .warning-message {
+        padding: 15px;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+        color: #856404;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+    }
+</style>
+
+<section id="tipos-bots" class="mb-16 md:mb-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Tipos de Bots y Entornos Ideales</h2>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">La PoC validó dos categorías principales de automatizaciones, cada una con un entorno de ejecución óptimo para maximizar la eficiencia y la estabilidad. Entender esta distinción es clave para la arquitectura de nuestras futuras soluciones RPA.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 flex flex-col">
+            <h3 class="text-2xl font-bold text-blue-700 mb-4">Bots con Interfaz Gráfica (GUI)</h3>
+            <p class="text-gray-600 mb-6 flex-grow">Estos bots simulan la interacción humana con aplicaciones visuales. Son esenciales para automatizar procesos en sistemas como SAP, donde se requiere navegar por menús, hacer clics y llenar formularios.</p>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="font-semibold text-blue-800">Caso de Prueba Principal:</p>
+                <p class="text-blue-800">Proyecto de Bloqueo en SAP GUI.</p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-200">
+                <h4 class="font-semibold text-gray-700 mb-3">Entorno de Ejecución Ideal:</h4>
+                <div class="flex items-center bg-gray-100 p-4 rounded-lg">
+                    <span class="text-3xl mr-4">💻</span>
+                    <div>
+                        <p class="font-bold text-lg">Máquina Virtual (VM)</p>
+                        <p class="text-sm text-gray-600">Garantiza la estabilidad y el acceso directo al entorno de escritorio necesario para la interacción gráfica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 flex flex-col">
+            <h3 class="text-2xl font-bold text-green-700 mb-4">Bots de Segundo Plano (Background)</h3>
+            <p class="text-gray-600 mb-6 flex-grow">Operan sin necesidad de una interfaz gráfica. Son perfectos para tareas de backend como procesamiento de archivos, consultas a bases de datos o comunicación con APIs.</p>
+            <div class="bg-green-50 p-4 rounded-lg">
+                <p class="font-semibold text-green-800">Casos de Prueba Principales:</p>
+                <p class="text-green-800">Proyectos de Calendarios (JSON) y Formularios Colcafé (Excel).</p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-200">
+                <h4 class="font-semibold text-gray-700 mb-3">Entorno de Ejecución Ideal:</h4>
+                <div class="flex items-center bg-gray-100 p-4 rounded-lg">
+                    <span class="text-3xl mr-4">📦</span>
+                    <div>
+                        <p class="font-bold text-lg">Contenedor Docker</p>
+                        <p class="text-sm text-gray-600">Ofrece eficiencia, aislamiento, escalabilidad y un uso óptimo de los recursos del sistema.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="desafios" class="mb-16 md:mb-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Desafíos Clave y Soluciones</h2>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">Toda prueba de concepto revela áreas de oportunidad. Identificamos desafíos técnicos importantes y ya hemos delineado o puesto en marcha soluciones claras para cada uno, demostrando la madurez de la plataforma y nuestra capacidad de gestión.</p>
+    <div id="accordion-container" class="max-w-3xl mx-auto space-y-4">
+        <!-- El contenido del acordeón se genera dinámicamente en scriptPOC.js -->
+    </div>
+</section>
+
+<section id="criterios" class="mb-16 md:mb-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Comparativa de Entornos de Ejecución</h2>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">La elección del entorno correcto es fundamental para el éxito de cada automatización. Este gráfico de radar compara las Máquinas Virtuales y los Contenedores Docker a través de criterios clave, proporcionando una guía visual para la toma de decisiones técnicas.</p>
+    <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+        <div class="chart-container">
+            <canvas id="criteriaChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<section id="recomendaciones" class="mb-16 md:mb-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Recomendaciones Estratégicas (DevSecOps)</h2>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">Basado en los hallazgos de la PoC, hemos formulado un conjunto de recomendaciones para asegurar que la adopción de BotCity sea robusta, segura y escalable a largo plazo. Estas prácticas formarán la base de nuestra gobernanza RPA.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Gobernanza y Calidad del Código</h3>
+            <p class="text-gray-600 mb-6">Estableceremos un flujo de trabajo estandarizado para garantizar la calidad, trazabilidad y mantenibilidad de todas las automatizaciones.</p>
+            <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Análisis Estático:** Uso obligatorio de DeepSource.</span></li>
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Revisiones de Código:** Política formal de Pull Requests (PR) con revisores designados.</span></li>
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Estrategia de Ramas:** Adoptar un modelo Git-flow (feature -> develop -> master) para controlar los despliegues.</span></li>
+            </ul>
+            <div class="mt-6 pt-6 border-t">
+                 <div class="w-full bg-gray-50 rounded-lg p-4 text-sm font-mono text-gray-600">
+                    <div class="flex items-center">
+                        <div class="text-purple-600">feature</div>
+                        <div class="flex-grow border-t-2 border-dashed border-gray-400 mx-2"></div>
+                        <div class="font-sans bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">PR</div>
+                        <div class="flex-grow border-t-2 border-dashed border-gray-400 mx-2"></div>
+                        <div class="text-blue-600">develop</div>
+                        <div class="flex-grow border-t-2 border-dashed border-gray-400 mx-2"></div>
+                        <div class="font-sans bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">PR</div>
+                        <div class="flex-grow border-t-2 border-dashed border-gray-400 mx-2"></div>
+                        <div class="text-black font-bold">master</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Seguridad e Infraestructura</h3>
+            <p class="text-gray-600 mb-6">Protegeremos nuestros procesos y datos mediante prácticas de seguridad robustas y una gestión de infraestructura bien definida.</p>
+            <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Gestión de Secretos:** Todas las credenciales (LOGIN, KEY) deben ser almacenadas como secretos en Azure DevOps.</span></li>
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Seguridad de Contenedores:** Análisis de imágenes Docker con Trivy para detectar vulnerabilidades.</span></li>
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Paridad de Entornos:** El ambiente de pruebas debe ser una réplica exacta del de producción.</span></li>
+                <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✓</span><span>**Monitoreo y Alertas:** Configurar alertas automáticas en BotCity para una rápida resolución de incidentes.</span></li>
+            </ul>
+        </div>
+    </div>
+</section>

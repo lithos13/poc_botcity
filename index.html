@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Interactivo: PoC BotCity</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#F8F7F4] text-[#333333]">
+
+    <!-- Chosen Palette: Calm Neutrals. Background: #F8F7F4, Text: #333333, Primary Accent: #2563EB, Secondary Accent: #F59E0B -->
+    <!-- Application Structure Plan: A single-page application with a sticky top navigation for smooth scrolling between thematic sections. The main content is now organized into a tabbed interface, allowing users to switch between "DevSecOps", "Desarrollo", and "Cloud" reports. The initial summary remains global. Each tab will contain content specific to its report, loaded dynamically via JavaScript. The LLM-powered Q&A section and the final conclusion are placed after the tabbed content, serving as overall tools/summaries for the entire PoC. This structure enhances user navigation and comprehension by segmenting information logically while maintaining a single-page experience. -->
+    <!-- Visualization & Content Choices: 
+        - Key Stats (Hero): Goal: Inform. Method: Dynamic stat cards (HTML/CSS). Justification: Provides an immediate, high-level summary of the PoC's success.
+        - DevSecOps Tab:
+            - Bot Types (Diagrams): Goal: Organize/Compare. Method: HTML/CSS flexbox diagrams.
+            - Challenges (Accordion): Goal: Organize. Method: Interactive HTML/JS accordion.
+            - Execution Criteria (Radar Chart): Goal: Compare. Method: Chart.js Canvas.
+            - Recommendations (Grid): Goal: Inform/Organize. Method: Interactive HTML/CSS grid with hover effects.
+            - Branching Strategy (Diagram): Goal: Organize. Method: HTML/CSS diagram.
+        - Desarrollo Tab:
+            - Productivity & Enablement: Goal: Inform. Method: Bullet points/cards.
+            - Architecture & Operation: Goal: Inform. Method: Bullet points/cards.
+            - Confirmed Capabilities Checklist: Goal: Inform/Summarize. Method: Grid of checkmark items.
+            - Identified Solutions Chart: Goal: Inform/Quantify. Method: Bar Chart (Chart.js Canvas).
+            - Strategic Advantages: Goal: Persuade/Inform. Method: Bullet points with icons.
+        - Cloud Tab: Goal: Inform.
+            - Instance Specifications: Goal: Inform/Summarize. Method: List. Justification: Clearly presents the tested environment.
+            - Monitoring Results (Overview): Goal: Inform/Summarize. Method: Text. Justification: Provides key performance indicators.
+            - Backup Management: Goal: Inform/Summarize. Method: Text. Justification: Highlights good practices.
+            - Conclusion: Goal: Inform/Summarize. Method: Text. Justification: Provides a clear summary and recommendation.
+        - LLM Q&A Assistant: Goal: Inform/Interact. Method: Textarea input, button, and dynamic text output powered by Gemini API. Justification: Allows users to ask specific questions about the consolidated PoC report content (from all available reports) and get direct answers, enhancing deep understanding and engagement with the combined document.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-gray-800">BotCity PoC</div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#resumen-general" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Resumen General</a>
+                    <a href="#asistente-llm" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Asistente PoC ✨</a>
+                    <a href="#conclusion-general" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Conclusión</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
+            <a href="#resumen-general" class="block py-2 text-gray-600 hover:text-blue-600">Resumen General</a>
+            <a href="#asistente-llm" class="block py-2 text-gray-600 hover:text-blue-600">Asistente PoC ✨</a>
+            <a href="#conclusion-general" class="block py-2 text-gray-600 hover:text-blue-600">Conclusión</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-12">
+
+        <section id="resumen-general" class="text-center mb-16 md:mb-24">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 text-[#2C3E50]">Explorador Interactivo: PoC BotCity</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Un análisis de viabilidad, hallazgos clave y recomendaciones estratégicas para la creación de automatizaciones en Python para Grupo Nutresa.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-800">Estado de la PoC</h3>
+                    <p class="text-3xl font-bold text-green-600 mt-2">Éxito</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-800">Viabilidad Técnica</h3>
+                    <p class="text-3xl font-bold text-blue-600 mt-2">Confirmada</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-800">Plataforma Base</h3>
+                    <p class="text-3xl font-bold text-yellow-600 mt-2">Python</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reportes-detallados" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Reportes Detallados por Área</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">Explora los hallazgos y conclusiones de cada área involucrada en la Prueba de Concepto de BotCity.</p>
+            
+            <div class="flex justify-center mb-8">
+                <button class="tab-button active bg-white py-3 px-6 rounded-l-lg border-b-2 border-blue-600 text-blue-600 font-semibold transition duration-200 hover:bg-gray-100" data-tab="devsecops">DevSecOps</button>
+                <button class="tab-button bg-white py-3 px-6 border-b-2 border-gray-300 text-gray-600 font-semibold transition duration-200 hover:bg-gray-100" data-tab="desarrollo">Desarrollo</button>
+                <button class="tab-button bg-white py-3 px-6 rounded-r-lg border-b-2 border-gray-300 text-gray-600 font-semibold transition duration-200 hover:bg-gray-100" data-tab="cloud">Cloud</button>
+            </div>
+
+            <div id="devsecops-content" class="tab-content active">
+                <!-- Contenido de DevSecOps se cargará aquí desde devsecops.html -->
+            </div>
+
+            <div id="desarrollo-content" class="tab-content">
+                <!-- Contenido de Desarrollo se cargará aquí desde desarrollo.html -->
+            </div>
+
+            <div id="cloud-content" class="tab-content">
+                <!-- Contenido de Cloud se cargará aquí desde cloud.html -->
+            </div>
+        </section>
+
+        <section id="asistente-llm" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Asistente de Consulta sobre la PoC ✨</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">¿Tienes preguntas específicas sobre el informe de la PoC? Usa este asistente para obtener respuestas rápidas y precisas, basadas directamente en el contenido del documento.</p>
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 max-w-3xl mx-auto">
+                <textarea id="queryInput" class="w-full p-3 border border-gray-300 rounded-md mb-4 focus:ring-blue-500 focus:border-blue-500" rows="4" placeholder="Ej: ¿Cuáles fueron los desafíos con los runners en contenedores?"></textarea>
+                <button id="queryButton" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg">
+                    Generar Respuesta ✨
+                </button>
+                <div id="loadingIndicator" class="hidden text-center mt-4 text-gray-600">
+                    Cargando respuesta...
+                </div>
+                <div id="responseOutput" class="mt-6 p-4 bg-gray-50 rounded-md border border-gray-200 hidden">
+                    <h3 class="font-semibold text-gray-800 mb-2">Respuesta del Asistente:</h3>
+                    <p id="responseText" class="text-gray-700"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion-general" class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-4">Conclusión: ¿Por Qué BotCity?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">La prueba de concepto no solo confirma la viabilidad técnica de BotCity, sino que la posiciona como la plataforma estratégica ideal para impulsar la siguiente fase de automatización en Grupo Nutresa.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-gray-800">Versatilidad</h4>
+                    <p class="text-sm text-gray-600">Soporta de forma nativa bots GUI y de background.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-gray-800">Agilidad DevOps</h4>
+                    <p class="text-sm text-gray-600">Integración perfecta con CI/CD para acelerar entregas.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-gray-800">Escalabilidad</h4>
+                    <p class="text-sm text-gray-600">Listo para crecer con contenedores y sesiones múltiples.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-gray-800">Eficiencia</h4>
+                    <p class="text-sm text-gray-600">Optimización de recursos mediante el uso inteligente de la infraestructura.</p>
+                </div>
+                 <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-gray-800">Foco en Python</h4>
+                    <p class="text-sm text-gray-600">Aprovecha un ecosistema potente y flexible para crear soluciones a medida.</p>
+                </div>
+            </div>
+            <p class="mt-8 text-xl font-semibold text-gray-800 max-w-4xl mx-auto">La adopción de BotCity es el siguiente paso lógico para fortalecer nuestra eficiencia operativa y liberar el verdadero potencial de Grupo Nutresa en la era de la automatización inteligente.</p>
+        </section>
+
+    </main>
+    
+    <footer class="bg-white mt-16 md:mt-24">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Grupo Nutresa. Informe Interactivo de la PoC BotCity.</p>
+        </div>
+    </footer>
+
+    <script src="scriptPOC.js"></script>
+</body>
+</html>

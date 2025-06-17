@@ -1,0 +1,52 @@
+<style>
+    /* Estilos mínimos para visualización directa, no afectan cuando se carga en index.html */
+    body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
+    .warning-message {
+        padding: 15px;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+        color: #856404;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+    }
+</style>
+
+<section class="mb-16 md:mb-24">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#2C3E50]">Informe del Área de Cloud</h2>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">Esta sección detalla el análisis de la instancia EC2 utilizada para la PoC, destacando el rendimiento, la gestión de recursos y las buenas prácticas implementadas para la confiabilidad en un entorno de nube.</p>
+    
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Especificaciones de la Instancia EC2 t3.medium</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>**VCPU:** 2 virtual CPUs</li>
+            <li>**Memoria RAM:** 4 GiB</li>
+            <li>**Almacenamiento:** 50Gb EBS</li>
+            <li>**Sistema Operativo:** Windows Server</li>
+        </ul>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Resultados del Monitoreo de Recursos</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>**CPU:** Se detectó un alto consumo del 90% en periodos cortos, pero sin afectaciones al rendimiento general, indicando buena tolerancia operativa.</li>
+            <li>**Memoria:** El uso osciló entre el 60% y el 90%, manteniéndose en rangos aceptables sin impacto en el funcionamiento de la PoC.</li>
+            <li>**Disco:** Se registró un consumo limitado al 30%, confirmando que el almacenamiento no es un cuello de botella.</li>
+        </ul>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Gestión de Respaldo y Escalabilidad</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>**Creación de AMI:** Se creó una Amazon Machine Image (AMI) de la instancia para garantizar su reutilización y escalabilidad, facilitando la replicación rápida del entorno.</li>
+            <li>**Snapshots:** Se tomaron snapshots de los volúmenes de almacenamiento como respaldo, fortaleciendo la estrategia de recuperación de datos.</li>
+        </ul>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Conclusión del Análisis Cloud</h3>
+        <p class="text-gray-700">La PoC en la instancia t3.medium con Windows Server demostró ser **adecuada y viable** para ejecutar eficientemente los procesos asociados al proyecto BotCity en un entorno controlado. A pesar del alto consumo puntual de CPU y memoria, el sistema no presentó fallos, lo que indica una buena tolerancia bajo carga moderada.</p>
+        <p class="text-gray-700 mt-4">La gestión de disco fue óptima. La creación de la AMI y los snapshots son buenas prácticas que refuerzan la estrategia de respaldo y escalabilidad.</p>
+        <p class="text-gray-700 mt-4 font-semibold">Se recomienda considerar una instancia con mayores recursos si se proyecta un crecimiento significativo en la demanda o una mayor concurrencia en la ejecución de los bots en producción.</p>
+    </div>
+</section>
